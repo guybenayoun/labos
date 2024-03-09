@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Inventory Report | LabOS Inventory System</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="./index.html" class="logo">LabOS Inventory System</a>
+        <div id="navbarLinks">
+        <a href="./index.html">Home</a>
+        <a href="./addItem.html">Add Item</a>
+        <a href="./reports.html" class="active">Inventory Report</a>
+        <a href="./system-settings.html">System Settings</a>
+        <a href="./contact.html">Contact Us</a>
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+    <div class="container">
+        <h1>Inventory Report</h1>
+        <div id="reportContainer" class="report-container"></div>
+    </div>
+    <div class="footer">
+        <img src="./logo.png" alt="LabOS Logo" class="footer-logo" />
+    </div>
+    
+    <script src="reports.js"></script>
+</body>
+</html>

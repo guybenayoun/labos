@@ -1,0 +1,191 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./components/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add New Item</title>
+</head>
+
+<body>
+    <div class="navbar-container">
+        <div class="topnav">
+          <a href="#home" class="active">Labos Inventory System</a>
+          <div id="myLinks">
+            <a href="./index.html">Home</a>
+            <a href="./addItem.html">Add Item</a>
+            <a href="#contact">New Purchase</a>
+            <a href="#about">Reports</a>
+          </div>
+          <a  class="icon" onclick="openMenu()">
+            <i class="fa fa-bars"></i>
+          </a>
+</div>
+</div>
+
+<div class="form-container">
+  <h2>Add New Inventory Item</h2>
+  <form id="addItemForm" class="item-form">
+          <div class="form-row">
+      <div class="form-group">
+          <label for="itemID">ItemID:</label>
+          <input type="text" id="ItemID" name="ItemID" required>
+         </div>
+      <div class="form-row">
+          <div class="form-group">
+              <label for="itemName">Item Name:</label>
+              <input type="text" id="itemName" name="itemName" required>
+          </div>
+          <div class="form-group">
+              <label for="itemDescription">Description:</label>
+              <input type="text" id="itemDescription" name="itemDescription" required>
+          </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group">
+              <label for="QuantityAvailable">Quantity:</label>
+              <input type="number" id="QuantityAvailable" name="QuantityAvailable" required>
+          </div>
+          <div class="form-group">
+              <label for="UnitPrice">Unit Price:</label>
+              <input type="text" id="UnitPrice" name="UnitPrice" required>
+          </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group">
+              <label for="ReorderLevel">Reorder Level:</label>
+              <input type="number" id="ReorderLevel" name="ReorderLevel" required>
+          </div>
+          <div class="form-group">
+              <label for="ExpiryDate">Expiry Date:</label>
+              <input type="date" id="ExpiryDate" name="ExpiryDate" required>
+          </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group">
+              <label for="SupplierInfo">Supplier Info:</label>
+              <input type="text" id="SupplierInfo" name="SupplierInfo" required>
+          </div>
+          <div class="form-group">
+              <label for="SupplierID">Supplier ID:</label>
+              <input type="number" id="SupplierID" name="SupplierID" required>
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="CategoryID">Category ID:</label>
+          <input type="number" id="CategoryID" name="CategoryID" required>
+      </div>
+      <div class="form-group">
+          <label for="UserID">User ID:</label>
+          <input type="number" id="UserID" name="UserID" required>
+      </div>
+      <button type="submit" class="submit-btn">Add Item</button>
+  </form>
+</div>
+
+    <script src="addItem.js"></script>
+    <script src="./components/navbar.js"></script>
+
+
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add New Item | LabOS Inventory System</title>
+</head>
+<body>
+            <div class="navbar">
+        <a href="./index.html" class="logo">LabOS Inventory System</a>
+        <div id="navbarLinks">
+               <a href="./index.html">Home</a>
+                <a href="./addItem.html" class="active">Add Item</a>
+               <a href="./reports.html">Inventory Report</a>
+               <a href="./purchase.html">Purchase</a>
+               <a href="./system-settings.html">System Settings</a>
+               <a href="./contact.html">Contact Us</a>
+            </div>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="header" id="myHeader">
+            <h1>Add New Inventory Item</h1>
+        </div>
+        <form id="addItemForm" >
+            <div class="form-row">
+                 <div class="input-group">
+                <label for="ItemID">ItemID</label>
+                <input type="text" id="ItemID" name="ItemID" required>
+                </div>
+                <div class="input-group">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" id="itemName" name="itemName" required>
+                </div>
+                <div class="input-group">
+                    <label for="itemDescription">Description</label>
+                    <input type="text" id="itemDescription" name="itemDescription" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="QuantityAvailable">Quantity Available</label>
+                    <input type="number" id="QuantityAvailable" name="QuantityAvailable" required>
+                </div>
+                <div class="input-group">
+                    <label for="UnitPrice">Unit Price ($)</label>
+                    <input type="text" id="UnitPrice" name="UnitPrice" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="ReorderLevel">Reorder Level</label>
+                    <input type="number" id="ReorderLevel" name="ReorderLevel" required>
+                </div>
+                <div class="input-group">
+                    <label for="ExpiryDate">Expiry Date</label>
+                    <input type="date" id="ExpiryDate" name="ExpiryDate">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="SupplierInfo">Supplier Info</label>
+                    <input type="text" id="SupplierInfo" name="SupplierInfo">
+                </div>
+                <div class="input-group">
+                    <label for="SupplierID">Supplier ID</label>
+                    <input type="number" id="SupplierID" name="SupplierID" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="CategoryID">Category ID</label>
+                    <input type="number" id="CategoryID" name="CategoryID" required>
+                </div>
+                <div class="input-group">
+                    <label for="UserID">User ID</label>
+                    <input type="number" id="UserID" name="UserID" required>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <div class="footer">
+        <img src="./logo.png" alt="LabOS Logo" class="footer-logo" />
+    </div>
+    
+    <script src="addItem.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,291 @@
+:root {
+    --primary-color: #0056b3;
+    --hover-color: #004494;
+    --text-color: #333;
+    --background-color: #f5f5f5;
+    --container-padding: 20px;
+    --border-radius: 5px;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.navbar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover, .navbar a.active {
+    background-color: var(--hover-color);
+}
+
+body {
+    padding-top: 60px; /* Height of navbar */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding-top: var(--container-padding);
+}
+
+.feature-item {
+    background-color: white;
+    padding: var(--container-padding);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.hero-section {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 40px var(--container-padding);
+    text-align: center;
+}
+
+.hero-section h1, .hero-section p {
+    margin: 20px 0;
+}
+
+#addUserForm {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#addItemForm {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+#addUserForm input[type="text"], #userForm input[type="email"], #userForm input[type="password"],
+#userForm input[type="number"] {
+    width: calc(100% - 30px);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.addUserForm-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Other styles */
+
+.footer {
+    display: flex;
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center; /* Centers the content vertically if the footer has a specific height */
+    position: fixed; /* Keeps the footer at the bottom regardless of the content length */
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Full width */
+    height: 60px; /* Adjust the height as needed */
+    background-color: #333; /* Adjust the background color as needed */
+}
+
+.footer-logo {
+    height: 50px; /* Adjust based on your preference */
+    width: auto; /* Keep the width auto to maintain aspect ratio */
+}
+
+.form-container {
+    max-width: 600px; /* Adjust to match the other form's width */
+    margin: auto; /* Centers the form in the page */
+    padding: 20px; /* Adds some padding inside the form */
+    /* Add any additional styling such as border, background, etc. */
+}
+
+.form-row {
+    margin-bottom: 10px; /* Adds space between rows */
+}
+
+.input-group label {
+    display: block; /* Ensures the label is on top of the input */
+    margin-bottom: 5px; /* Adds some space above the input */
+}
+
+.input-group input,
+.input-group select {
+    width: 100%; /* Full width of the .input-group container */
+    padding: 8px; /* For better text input visibility */
+    border-radius: 4px; /* Rounded corners */
+    border: 1px solid #ddd; /* Light grey border */
+}
+
+.submit-btn {
+    background-color: #004d99; /* Match your theme color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Full width button */
+}
+
+.submit-btn:hover {
+    background-color: #003366; /* Darker shade on hover */
+}
+
+/* Add responsive behavior as needed */
+@media (max-width: 768px) {
+    /* Responsive styles */
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Style inputs */
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Style the container/contact section */
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  /* Create two columns that float next to eachother */
+  .column {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
