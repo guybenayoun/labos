@@ -24,7 +24,7 @@ const poolPromise = pool.connect();
 
 //===============================================================
 
-async function InsertInventoryItem(data) {
+async function insertInventoryItem(data) {
     const pool = await new mssql.ConnectionPool(sqlConfig).connect();
     const result = await pool.request()
         .input("ItemID", mssql.Int, data.ItemID)
@@ -41,99 +41,92 @@ async function InsertInventoryItem(data) {
         .execute('InsertInventoryItem');
     return result;
 }
-module.exports = { InsertInventoryItem };
+module.exports.insertInventoryItem =  insertInventoryItem ;
 
 //===============================================================
 
+// async function fetchInventoryReport() {
+//     const pool = await new mssql.ConnectionPool(sqlConfig);
+//     const result = await pool.request().execute('sp_GetInventoryReport');
+//     return result.recordset;
+// }
 async function fetchInventoryReport() {
-    const pool = await mssql.ConnectionPool(sqlConfig);
-    const result = await pool.request().execute('sp_GetInventoryReport');
-    return result.recordset;
-}
-    
-
-module.exports = {fetchInventoryReport};
-
-//===============================================================
-
-
-const addUser = async (userData) => {
+    await poolPromise;
     try {
-        const pool = await mssql.connect(sqlConfig);
-        const result = await pool.request()
-            .input('UserID', mssql.Int, userData.UserID)
-            .input('FirstName', mssql.VarChar, userData.FirstName)
-            .input('LastName', mssql.VarChar, userData.LastName)
-            .input('Role', mssql.VarChar, userData.Role)
-            .input('Email', mssql.VarChar, userData.Rmail)
-            .input('Username', mssql.VarChar, userData.Username)
-            .input('Password', mssql.VarChar, userData.Password) 
-            .execute('AddUser');
-        return result;
+        const request = pool.request();
+        const result = await request.execute('sp_GetInventoryReport');
+        return result.recordset;
     } catch (err) {
-        console.error('Database operation failed:', err);
-        throw err;
+        console.error('Error fetching inventory report:', err);
+        throw err; 
     }
 }
+
+
+module.exports.fetchInventoryReport = fetchInventoryReport;
+
+//===============================================================
+
+
+async function AddUser(userData) {
+    const pool = await poolPromise;
+    const result = await pool.request()
+        .input('UserID', mssql.Int, userData.UserID)
+        .input('FirstName', mssql.VarChar, userData.FirstName)
+        .input('LastName', mssql.VarChar, userData.LastName)
+        .input('Role', mssql.VarChar, userData.Role)
+        .input('Email', mssql.VarChar, userData.Email)
+        .input('Username', mssql.VarChar, userData.Username)
+        .input('Password', mssql.VarChar, userData.Password) 
+        .execute('AddUser');
+    return result;
+}
+
+module.exports.AddUser = AddUser
 //===============================================================
 
 async function insertFeedback(FirstName, LastName, Role, Subject, Message) {
     try {
         await mssql.connect(sqlConfig);
-        await mssql.query`INSERT INTO Feedbacks (FirstName, LastName, Role, Subject, Message) VALUES (${FirstName}, ${LastName}, ${Role}, ${Subject}, ${Message})`;
+        await mssql.query`INSERT INTO Feedbacks (FirstName, LastName, Role, Subject) VALUES (${FirstName}, ${LastName}, ${Role}, ${Subject})`;
         console.log("Feedback inserted successfully.");
     } catch (err) {
         console.error("Error inserting feedback:", err);
     }
 }
 
-module.exports = { insertFeedback };
+module.exports.insertFeedback = insertFeedback;
 
 //===============================================================
 
 
-async function fetchSuppliers() {
-    try {
-        await poolPromise;
-        const request = new mssql.Request(pool);
-        const result = await request.query('SELECT SupplierID, SupplierName FROM Supplier');
-        return result.recordset;
-    } catch (err) {
-        console.error('fetchSuppliers error:', err);
-        throw err;
-    }
-}
+// async function fetchSuppliers() {
+//     try {
+//         await mssql.connect(sqlConfig);
+//         return await mssql.query('EXEC FetchSuppliers');
+//     } catch (err) {
+//         console.error('Error fetching suppliers:', err);
+//     }
+// }
 
-async function fetchInventoryItems() {
-    try {
-        await poolPromise;
-        const request = new mssql.Request(pool);
-        const result = await request.query('SELECT ItemID, ItemName FROM InventoryItem');
-        return result.recordset;
-    } catch (err) {
-        console.error('fetchInventoryItems error:', err);
-        throw err;
-    }
-}
+// async function fetchInventoryItems() {
+//     try {
+//         await mssql.connect(sqlConfig);
+//         return await mssql.query('EXEC FetchInventoryItems');
+//     } catch (err) {
+//         console.error('Error fetching inventory items:', err);
+//     }
+// }
 
-async function insertOrder(orderDetails) {
-    try {
-        await poolPromise;
-        const request = new mssql.Request(pool);
-        request.input('OrderDate', mssql.Date, orderDetails.orderDate)
-               .input('ExpectedDeliveryDate', mssql.Date, orderDetails.expectedDeliveryDate)
-               .input('Status', mssql.VarChar, orderDetails.status)
-               .input('TotalCost', mssql.Decimal(10, 2), orderDetails.totalCost)
-               .input('UserID', mssql.Int, orderDetails.userID);
-
-        const result = await request.query(`INSERT INTO Orders (OrderDate, ExpectedDeliveryDate, Status, TotalCost, UserID) 
-                                            VALUES (@OrderDate, @ExpectedDeliveryDate, @Status, @TotalCost, @UserID);
-                                            SELECT SCOPE_IDENTITY() AS OrderID;`);
-        return result.recordset[0].OrderID;
-    } catch (err) {
-        console.error('insertOrder error:', err);
-        throw err;
-    }
-}
-
-module.exports = { fetchSuppliers, fetchInventoryItems, insertOrder };
+// async function insertOrder(orderDetails) {
+//     try {
+//         await mssql.connect(sqlConfig);
+//         const result = await sql.query`EXEC InsertOrder ${orderDetails.OrderDate}, ${orderDetails.ExpectedDeliveryDate}, ${orderDetails.Status}, ${orderDetails.TotalCost}, ${orderDetails.UserID}`;
+//         return result.recordset[0].OrderID;
+//     } catch (err) {
+//         console.error('Error inserting order:', err);
+//     }
+// }
+// module.exports.fetchSuppliers = fetchSuppliers
+//     module.exports.fetchInventoryItems = fetchInventoryItems
+//         module.exports.insertOrder = insertOrder 

@@ -1,53 +1,46 @@
-async function populateDropdown(url, elementId, nameProperty, valueProperty) {
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        const select = document.getElementById(elementId);
-        data.forEach(item => {
-            const option = new Option(item[nameProperty], item[valueProperty]);
-            select.add(option);
-        });
-    } catch (error) {
-        console.error('Failed to fetch data:', error);
-    }
-}
+// async function populateDropdown(url, elementId) {
+//     try {
+//         const response = await fetch(url);
+//         const data = await response.json();
+//         const selectElement = document.getElementById(elementId);
+//         selectElement.innerHTML = '';
+      
+//         data.forEach(item => {
+//             let option = document.createElement('option');
+//             option.value = item.name;
+//             option.text = item.name; 
+//             selectElement.appendChild(option);
+//         });
+//     } catch (error) {
+//         console.error('Failed to populate dropdown:', error);
+//     }
+// }
 
-document.addEventListener('DOMContentLoaded', () => {
-    populateDropdown('/api/inventory-items', 'ItemName', 'ItemName', 'ItemID'); // Assuming API returns ItemName and ItemID
-    populateDropdown('/api/suppliers', 'SupplierName', 'SupplierName', 'SupplierID'); // Assuming API returns SupplierName and SupplierID
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     populateDropdown('/api/items', 'ItemName'); 
+//     populateDropdown('/api/suppliers', 'SupplierName'); 
+// });
 
-document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-
-    // Convert formData to an object that includes the correct property names expected by the backend.
-    let orderDetails = {};
-    formData.forEach((value, key) => {
-        if(key === 'ItemName') {
-            orderDetails['ItemID'] = value; // Assuming backend expects ItemID
-        } else if (key === 'SupplierName') {
-            orderDetails['SupplierID'] = value; // Assuming backend expects SupplierID
-        } else {
-            orderDetails[key] = value;
-        }
-    });
-
-    try {
-        const response = await fetch('/api/orders', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ orderDetails }),
-        });
-        if (response.ok) {
-            alert('Order submitted successfully!');
-            this.reset();
-        } else {
-            const errorResponse = await response.json();
-            throw new Error(errorResponse.message || 'Failed to submit order');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert(error.message);
-    }
-});
+// document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+//     e.preventDefault();
+//     const formData = new FormData(this);
+//     const formDataObj = Object.fromEntries(formData.entries());
+    
+//     try {
+//         const response = await fetch('/api/orders', {
+//             method: 'POST',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify(formDataObj),
+//         });
+//         if (response.ok) {
+//             alert('Order submitted successfully!');
+//             this.reset();
+//         } else {
+//             const errorResponse = await response.json();
+//             alert(errorResponse.message || 'Failed to submit order');
+//         }
+//     } catch (error) {
+//         console.error('Submission error:', error);
+//         alert('Failed to submit order due to an error.');
+//     }
+// });

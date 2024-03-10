@@ -14,18 +14,19 @@
                <a href="./index.html">Home</a>
                 <a href="./addItem.html">Add Item</a>
                <a href="./reports.html">Inventory Report</a>
-               <a href="./purchase.html">Purchase</a>
                <a href="./system-settings.html" class="active">System Settings</a>
                <a href="./contact.html">Contact Us</a>
             </div>
         <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
-            <i class="fa fa-bars"></i>
+            <!-- <i class="fa fa-bars"></i> -->
         </a>
     </div>
-    <h1>System Settings</h1>
-    <h3>Add New User</h3>
-    <form id="addUserForm" class="form-container">
-        <div class="form-row">
+    <div class="container">
+        <div class="header" id="myHeader">
+            <h1>Add New User</h1>
+        </div>
+        <form id="addItemForm" >
+            <div class="form-row">
             <div class="input-group">
                 <label for="UserID">User ID</label>
         <input type="number" id="UserID" name="UserID" placeholder="UserID" required>
