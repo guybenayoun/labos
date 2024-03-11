@@ -150,14 +150,14 @@ th {
 
 
 
-#addUserForm input[type="text"], #userForm input[type="email"], #userForm input[type="password"],
-#userForm input[type="number"] {
+/* #addUserForm input[type="text"], #userForm input[type="email"], #userForm input[type="password"],
+#adduserForm input[type="number"] {
     width: calc(100% - 30px);
     margin: 20px 0;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-}
+} */
 
 .addUserForm-control {
     width: 100%;
